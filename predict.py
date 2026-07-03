@@ -1,8 +1,9 @@
 import numpy as np
-from tensorflow.keras.models import load_model
+import cv2
+import tensorflow as tf
 from preprocess import preprocess_image
 
-model = load_model("model/digit_model.keras")
+model = tf.keras.models.load_model("model/digit_model.keras")
 
 def predict_digit(image):
 
