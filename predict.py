@@ -2,14 +2,17 @@ import numpy as np
 import cv2
 from preprocess import preprocess_image
 
+import pickle
+
+# Load model safely using streamlit cache
 import streamlit as st
 
 @st.cache_resource
-def load_model():
-    from tensorflow.keras.models import load_model
-    return load_model("model/digit_model.keras")
+def load_model_file():
+    import tensorflow as tf
+    return tf.keras.models.load_model("model/digit_model.keras")
 
-model = load_model()
+model = load_model_file()
 
 def predict_digit(image):
 
