@@ -1,9 +1,15 @@
 import numpy as np
 import cv2
 from preprocess import preprocess_image
-from tensorflow.keras.models import load_model
 
-model = load_model("model/digit_model.keras")
+import streamlit as st
+
+@st.cache_resource
+def load_model():
+    from tensorflow.keras.models import load_model
+    return load_model("model/digit_model.keras")
+
+model = load_model()
 
 def predict_digit(image):
 
