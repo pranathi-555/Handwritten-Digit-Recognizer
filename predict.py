@@ -1,9 +1,9 @@
 import numpy as np
 import cv2
-import tensorflow as tf
 from preprocess import preprocess_image
+from tensorflow.keras.models import load_model
 
-model = tf.keras.models.load_model("model/digit_model.keras")
+model = load_model("model/digit_model.keras")
 
 def predict_digit(image):
 
@@ -15,7 +15,6 @@ def predict_digit(image):
     prediction = model.predict(processed, verbose=0)[0]
 
     digit = np.argmax(prediction)
-
     confidence = prediction[digit] * 100
 
     return digit, confidence, prediction
